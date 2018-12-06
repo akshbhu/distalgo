@@ -1,0 +1,2 @@
+cd Courses\1st_semester\async\project
+python -m da -m da.examples.lamutex.orig_debug 2 2

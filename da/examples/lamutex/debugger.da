@@ -28,10 +28,16 @@ class Debugger(process):
         self.ps = ps
         self.debug_ps = debug_ps
             
-    def receive(msg= ('debug_req', p)):
-        output('debug recieved: ', p)
-        send(('continue', self), to=ps - debug_ps)
-        send(('debug', self), to=debug_ps)
+    def receive(msg= ('debug_req', i, p)):
+        output('debug recieved1: ', p)
+        output('debugger',i)
+        send(('continue'+str(i), self), to=ps - debug_ps)
+        send(('debug'+str(i), self), to=debug_ps)
+
+    def receive(msg= ('debug_pid', p)):
+        output('debug recieved2: ', p)
+        self.debug_ps=p
+        output('debug recieved3: ', self.debug_ps)       
         
     def run():
         output('process started')
